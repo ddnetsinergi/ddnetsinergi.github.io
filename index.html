@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDNet - Welcome to the Future</title>
+    
+    <!-- Memuat Tailwind CSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menambahkan font Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .hero-container {
+            background-image: url(asset/12778084_1920_1080_30fps.gif);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }   
+        
+
+        /* Custom styles for the blue "Welcome to Nova!" tag */
+        .tag-blue {
+            background-color: #DBEAFE; /* Tailwind bg-blue-100 */
+            color: #1E40AF; /* Tailwind text-blue-800 */
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.25rem 1rem; /* px-4 py-1 */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            display: inline-block;
+        }
+
+        /* Custom CSS untuk efek hover underline */
+        .nav-link-hover {
+            position: relative;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; /* Jarak dari teks */
+            left: 50%;
+            width: 0%;
+            height: 2px;
+            background-color: #1E40AF; /* Warna underline (text-blue-800) */
+            transition: all 0.3s ease-out;
+            transform: translateX(-50%);
+        }
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
+
+        /* CSS untuk animasi kartu artikel (BARU) */
+        .article-card {
+            opacity: 0;
+            transform: translateY(40px); /* Mulai dari 40px ke bawah */
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transition-delay: 0s; /* Akan di-override oleh JS untuk efek staggered */
+        }
+        .article-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CSS untuk animasi statistik (BARU) */
+        .stat-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transition-delay: 0s; /* Akan di-override oleh JS */
+        }
+        .stat-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CSS untuk animasi fitur ekosistem (BARU) */
+        .ecosystem-feature {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transition-delay: 0s; /* Akan di-override oleh JS */
+        }
+        .ecosystem-feature.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CSS untuk animasi kartu layanan (BARU) */
+        .service-card, .service-header {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transition-delay: 0s; /* Akan di-override oleh JS */
+        }
+        .service-card.is-visible, .service-header.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CSS untuk animasi testimoni (BARU) */
+        .testimonial-card, .testimonial-header {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transition-delay: 0s; /* Akan di-override oleh JS */
+        }
+        .testimonial-card.is-visible, .testimonial-header.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animasi "Melayang" untuk gambar */
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+
+        /* Animasi "Berdenyut" untuk ikon */
+        @keyframes pulse-lite {
+          0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+          70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+          100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        .animate-pulse-lite {
+          animation: pulse-lite 2.5s infinite;
+        }
+
+        /* --- Animasi Latar Belakang Gradien --- */
+        @keyframes animatedGradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+          /* Gradien biru yang bergerak pelan */
+          background: linear-gradient(
+                -45deg,
+                #8bb2ff,
+                #274bff,
+                #79a1ff,
+                #0926ff
+            );
+          background-size: 400% 400%;
+          animation: animatedGradient 13s ease infinite;
+        }
+
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <div class="hero-container flex flex-col items-center justify-center">    
+        <!-- ========== Navbar ========== -->
+        <nav class="max-w-7xl mx-auto p-4 sm:p-5 py-4 fixed top-0 left-0 w-full z-50">
+            <div class="bg-blue-300/60 backdrop-blur-lg border border-blue-100/50 rounded-full flex items-center justify-between px-6 sm:px-8 py-3 shadow-xl">
+                
+                <!-- Kolom 1: Logo (Kiri) -->
+                <div class="flex-1 flex justify-start items-center">
+                    <a href="#" class="text-2xl font-bold text-gray-900">
+                        DDNet
+                    </a>
+                </div>
+
+                <!-- Kolom 2: Menu (Tengah) -->
+                <div class="flex-shrink-0">
+                    <div class="hidden lg:flex items-center space-x-4">
+                        <a href="#" class="text-gray-700 hover:text-gray-900 transition-colors duration-300 px-3 py-1 nav-link-hover">Home</a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 transition-colors duration-300 px-3 py-1 nav-link-hover">About</a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 transition-colors duration-300 px-3 py-1 nav-link-hover">Service</a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 transition-colors duration-300 px-3 py-1 nav-link-hover">Blog</a>
+                        <a href="#" class="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors duration-300 px-3 py-1 nav-link-hover">
+                            <span>Pages</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 transition-colors duration-300 px-3 py-1 nav-link-hover">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Kolom 3: Tombol (Kanan) -->
+                <div class="flex-1 flex justify-end items-center">
+                    <a href="#" class="hidden sm:block bg-white/70 backdrop-blur-sm border border-white/50 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-white transition-all shadow-md">
+                        Berlangganan
+                    </a>
+                    <button id="mobileMenuButton" class="lg:hidden text-gray-900 p-2 rounded-md hover:bg-white/30 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+            
+            <!-- Menu Mobile -->
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 bg-blue-100/70 backdrop-blur-md rounded-2xl p-4 space-y-2 border border-white/30 shadow-lg">
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-200/70 rounded-lg transition-all duration-200 transform hover:scale-[1.02]">Home</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-200/70 rounded-lg transition-all duration-200 transform hover:scale-[1.02]">About</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-200/70 rounded-lg transition-all duration-200 transform hover:scale-[1.02]">Service</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-200/70 rounded-lg transition-all duration-200 transform hover:scale-[1.02]">Blog</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-200/70 rounded-lg transition-all duration-200 transform hover:scale-[1.02]">Pages</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-200/70 rounded-lg transition-all duration-200 transform hover:scale-[1.02]">Contact</a>
+                <a href="#" class="block w-full text-center bg-white/50 backdrop-blur-sm border border-white/50 rounded-full px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-white/70 transition-all shadow-md mt-2">
+                    Berlangganan
+                </a>
+            </div>
+        </nav>
+
+        <!-- ========== Hero Section ========== -->
+        <section class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 pt-28 pb-10">
+            
+            <span class="tag-blue">Selamat datang di DD-Net!</span>
+
+            <h3 class="mt-8 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900">
+                Jantung internet di rumah anda. Selalu terkoneksi bersama DDNet
+            </h3>
+
+            <p class="mt-8 text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                Pada era yang serba terhubung, kami adalah jalur andal yang mempersatukan anda dengan komunitas internet, pasar, dan konten global. Tidak lagi ada batasan akses untuk terus menjelajah, berkreasi, dan berinovasi.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-colors shadow-md">
+                    Get in touch
+                </a>
+<<<<<<< HEAD
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full text-gray-900 bg-white hover:bg-gray-100 transition-colors shadow-md">
+                    Berlangganan
+=======
+                <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-base font-medium rounded-full text-gray-900 bg-white hover:bg-gray-100 transition-colors shadow-md">
+                    Book a call
+>>>>>>> 01f3210 (add-image)
+                </a>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- ========== "Proven Numbers" Section ========== -->
+<<<<<<< HEAD
+    <section class="bg-gray-100 overflow-hidden border-blue-100 px-6">
+=======
+    <section class="bg-gray-100 overflow-hidden">
+>>>>>>> 01f3210 (add-image)
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+                <div class="flex-1">
+                    <p class="text-sm font-semibold tracking-wider text-gray-500 uppercase">SETIAP AKSI</p>
+                    <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+                        Yang Telah Kami Wujudkan
+                    </h2>
+                </div>
+                <div class="mt-6 md:mt-0 md:ml-6 flex-shrink-0">
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md">
+                        Get In Touch
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mt-16">
+                
+                <div class="stat-item text-center">
+                    <p class="text-5xl font-extrabold text-blue-700">+Unlimited</p>
+                    <hr class="mt-6 border-gray-300">
+                    <h3 class="mt-6 text-lg font-bold text-gray-900">Tantpa Batasan Fair Usage Policy (FUP)</h3>
+                    <p class="mt-2 text-base text-gray-600">Bebas streaming, download, dan game tanpa khawatir kehabisan kuota dan kecepatan dipotong.</p>
+                </div>
+
+                <div class="stat-item text-center">
+                    <p class="text-5xl font-extrabold text-blue-700 ">100%</p>
+                    <hr class="mt-6 border-gray-300">
+                    <h3 class="mt-6 text-lg font-bold text-gray-900">Infrastruktur <i>Fiber Optic</i> <br> End-to-End</h3>
+                    <p class="mt-2 text-base text-gray-600">Koneksi super cepat dengan teknologi fiber optik hingga ke rumah anda - dari hulu hingga ke hilir.</p>
+                </div>
+
+                <div class="stat-item text-center">
+                    <p class="text-5xl font-extrabold text-blue-700">24/7</p>
+                    <hr class="mt-6 border-gray-300">
+                    <h3 class="mt-6 text-lg font-bold text-gray-900">Customer Support & Dukungan Teknis Handal</h3>
+                    <p class="mt-2 text-base text-gray-600">Tim Customer service dan Technical support yang handal dan siap membantu kapan pun dan dimanapun.</p>
+                </div>
+
+                <div class="stat-item text-center">
+                    <p class="text-5xl font-extrabold text-blue-700">99%</p>
+                    <hr class="mt-6 border-gray-300">
+                    <h3 class="mt-6 text-lg font-bold text-gray-900">Ketersediaan Jaringan - Bebas Gangguan</h3>
+                    <p class="mt-2 text-base text-gray-600">Nikmati koneksi yang stabil dan konsisten dengan tingkat ketersediaan hingga sepanjang hari tanpa gangguan berarti.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== "Our Ecosystem" Section ========== -->
+    <section class="bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            
+            <!-- Header (Judul, Subjudul, Paragraf) sekarang di TENGAH -->
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight underline">
+                    Ekosistem Kami
+                </h1>
+                <p class="mt-8 text-sm font-semibold tracking-wider text-gray-500 uppercase">WE DON'T JUST CONNECT HOMES - WE POWER DIGITAL LIFESTYLES</p>
+                <h4 class="mt-4 text-3xl sm:text-4xl font-bold text-gray-900 leading-snug pt-5 pb-5">
+                    Untuk Mendukung Setiap Aspek Kehidupan Digital dan Menghadirkan Pengalaman Internet Terbaik, Kami Berkomitmen Membangun Ekosistem Layanan yang Komprehensif, Andal, dan Berkelanjutan
+                </h4>
+            </div>
+
+            <!-- Grid Fitur (di bawah header) -->
+            <div class="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Kartu Fitur 1 -->
+<<<<<<< HEAD
+                <div class="ecosystem-feature bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:-translate-y-2">
+=======
+                <div class="ecosystem-feature bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+>>>>>>> 01f3210 (add-image)
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-white text-gray-800 shadow-md">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        </div>
+                        <div class="text-3xl font-extrabold text-blue-700">HOME</div>
+                        <p class="text-xl font-semibold text-gray-900">
+                            Internet Keluarga Dengan Akses Tanpa Batas
+                        </p>
+                    </div>
+                    <p class="mt-4 text-base text-gray-600">
+                        Jelajahi dunia digital tanpa batas dengan internet fiber super cepat yang didesain untuk rumah modern. Semua terhubung sempurna dalam satu jaringan untuk mendukung setiap momen digital keluarga.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                        Discover Now
+                    </a>
+                </div>
+
+                <!-- Kartu Fitur 2 -->
+<<<<<<< HEAD
+                <div class="ecosystem-feature bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:-translate-y-2">
+=======
+                <div class="ecosystem-feature bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+>>>>>>> 01f3210 (add-image)
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-100 text-yellow-800 shadow-md">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 8H5c-1.65 0-3 1.35-3 3v6c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-6c0-1.65-1.35-3-3-3zm-7 11c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm7-9h-4V7h4v3zM5 10V7h4v3H5z"></path></svg>
+                        </div>
+                        <div class="text-3xl font-extrabold text-blue-700">WORK</div>
+                        <p class="text-xl font-semibold text-gray-900">Dukungan Bisnis Andal Tanpa Kompromi</p>
+                    </div>
+                    <p class="mt-4 text-base text-gray-600">
+                        Hadirkan performa internet andal untuk mendorong transformasi digital bisnis anda. Solusi internet khusus untuk kebutuhan operasional dan perkembangan bisnis UMKM.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                        Discover more
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ========== "Services" Section ========== -->
+    <section class="bg-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            
+            <!-- Header -->
+            <div class="service-header flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
+                <div class="flex-1">
+                    <p class="text-sm font-semibold tracking-wider text-blue-600 uppercase">SERVICES THAT WORK</p>
+                    <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+                        We Help You Scale With Clear, Proven Services.
+                    </h2>
+                </div>
+                <div class="mt-6 md:mt-0 md:ml-6 flex-shrink-0">
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md">
+                        Get In Touch
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grid Kartu Layanan -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Kartu 1: Social Media -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6 shadow-md">
+                        <!-- Ikon: Social Media -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V4a2 2 0 012-2h8a2 2 0 012 2v4z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Social Media</h3>
+                    <p class="mt-3 text-base text-gray-600">Grow your brand and reach the right audience.</p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Social media strategy</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Post & ad design</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Profile setup & branding</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Influencer & community outreach</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 2: SEO Optimization -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6 shadow-md">
+                        <!-- Ikon: SEO -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">SEO Optimization</h3>
+                    <p class="mt-3 text-base text-gray-600">Get found faster and rank higher on search engines.</p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Keyword research & analysis</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>On-page + technical SEO</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>High-quality backlinks</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Performance tracking & reports</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 3: Video Marketing -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-blue-300/75 hover:-translate-y-2">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6 shadow-md">
+                        <!-- Ikon: Video -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h10v12H4z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Video Marketing</h3>
+                    <p class="mt-3 text-base text-gray-600">Tell your story and results through video content.</p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Promo & brand videos</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Social media video ads</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Animated explainer videos</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>YouTube strategy & video SEO</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 4: UI/UX Design -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-blue-300/75 hover:-translate-y-2">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6 shadow-md">
+                        <!-- Ikon: UI/UX -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17.11A5 5 0 014 12.11V7.11a5 5 0 015.75-4.99L10 2.23l.25-.11a5 5 0 015.75 4.99v5a5 5 0 01-5.75 4.99L10 17.23l-.25-.12z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12.11h16"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">UI/UX Design</h3>
+                    <p class="mt-3 text-base text-gray-600">Easy to use—focused on flow, clarity, and user goals.</p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>User-first interfaces</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Wireframes & prototyping</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Mobile + web design</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Design systems</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 5: Branding & Packaging -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-blue-300/75 hover:-translate-y-2">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6 shadow-md">
+                        <!-- Ikon: Branding -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h.01M7 11h.01M17 3h.01M17 7h.01M17 11h.01M12 21v-8m0 0V5a2 2 0 012-2h3.5a2.5 2.5 0 012.5 2.5v.5a2.5 2.5 0 01-2.5 2.5H14v.5A2.5 2.5 0 0111.5 13H12z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Branding & Packaging</h3>
+                    <p class="mt-3 text-base text-gray-600">Build a brand that people remember—across brand.</p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Logo & visual identity</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Packaging design</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Brand voice & messaging</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Style guides</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 6: Website Design -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-blue-300/75 hover:-translate-y-2">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6 shadow-md">
+                        <!-- Ikon: Website -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1.5 1.5L6 20m2.25-3H5.625c-.621 0-1.125-.504-1.125-1.125V11.25c0-.621.504-1.125 1.125-1.125H9.75v5.625z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17l-.75-4.5M9.75 17l.75 4.5M3 13.5h18M3 6.75h18M3 10.125h18M10.125 2.25h3.75V5.25h-3.75V2.25zM13.875 17c.621 0 1.125.504 1.125 1.125v1.75c0 .621-.504 1.125-1.125 1.125h-3.75c-.621 0-1.125-.504-1.125-1.125v-1.75c0-.621.504-1.125 1.125-1.125h3.75z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Website Design</h3>
+                    <p class="mt-3 text-base text-gray-600">Crafted websites that look great and work fast.</p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Modern responsive design</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Landing pages & eCommerce</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Custom layout & visuals</span>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Conversion-focused UI</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Ready To Scale Section (from image 2) -->
+    <section class="py-24 animate-gradient"> <!-- Latar belakang diganti ke gradien animasi -->
+        <div class="container mx-auto px-6 max-w-6xl text-white">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left Column -->
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-5xl font-bold mb-6 leading-tight">
+                        Mari Melakukan Hal Yang Luar Biasa,<br>
+                        Scale Up Internet Anda Ke Level <br> yang Berikutnya !!
+                    </h2>
+                    <a href="#" class="inline-flex items-center bg-white text-blue-700 font-medium py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 self-start mb-16 transform hover:scale-105">
+                        Daftar Sekarang
+                        <!-- Inline SVG Arrow Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+
+                    <!-- Trusted By Section -->
+                    <div>
+                        <p class="text-sm font-semibold tracking-wider uppercase opacity-80 mb-6">
+                            TRUSTED BY 2000+ USER AND BUSINESSES:
+                        </p>
+                        <div class="flex flex-wrap gap-x-8 gap-y-4 items-center">
+                            <!-- Saya akan gunakan teks dan ikon SVG sederhana sebagai ganti logo -->
+                            <div class="flex items-center space-x-2">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                                <span class="font-bold text-lg">Faster</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg 
+                                  xmlns="http://www.w3.org/2000/svg" 
+                                  width="24" 
+                                  height="24" 
+                                  viewBox="0 0 24 24" 
+                                  fill="none" 
+                                  stroke="currentColor" 
+                                  stroke-width="3" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round">
+                                  <path d="M2 12c5.5-9 16.5 9 22 0" />
+                                </svg>
+                                <span class="font-bold text-lg">Flexible</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg 
+                                  xmlns="http://www.w3.org/2000/svg" 
+                                  width="24" 
+                                  height="24" 
+                                  viewBox="0 0 24 24" 
+                                  fill="none" 
+                                  stroke="currentColor" 
+                                  stroke-width="2" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round">
+                                  <rect x="3" y="17" width="18" height="4" rx="1" ry="1" />
+                                  <rect x="5" y="11" width="14" height="4" rx="1" ry="1" />
+                                  <rect x="7" y="5" width="10" height="4" rx="1" ry="1" />
+                                </svg>
+                                <span class="font-bold text-lg">Stable</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                                <span class="font-bold text-lg">Secure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column (Image with icons) -->
+                <div class="relative w-full max-w-md mx-auto animate-float">
+                    <!-- Placeholder Image -->
+<<<<<<< HEAD
+                    <img src="asset/sidepic.png" alt="server-image" class="rounded-lg w-full h-auto">
+=======
+                    <img src="asset/sidepic.jpg" alt="server-image" class="rounded-md shadow-2xl w-full h-auto">
+>>>>>>> 01f3210 (add-image)
+                    
+                    <!-- Top-left Icon (Lightning) -->
+                    <div class="absolute top-0 left-0 -mt-6 -ml-6 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center animate-pulse-lite">
+                        <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    
+                    <!-- Bottom-right Icon (Arrow) -->
+                    <div class="absolute bottom-0 right-0 mb-6 -mr-6 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center animate-pulse-lite" style="animation-delay: 0.5s;">
+                        <!-- SVG Panah ke bawah dengan warna merah -->
+                        <svg class="h-8 w-8 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Bagian "See our work" article ========== -->
+    <section class="bg-white overflow-hidden"> 
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
+                <div>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+                        See our work
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-700 max-w-2xl">
+                        Welcome to the spotlight, where Nova's magic touches down, turning the ordinary into the extraordinary.
+                    </p>
+                </div>
+                <a href="#" class="mt-4 sm:mt-0 flex-shrink-0 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-colors shadow-md">
+                    View all
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="article-card bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+                    <img class="w-full h-48 object-cover" src="asset/article1.webp" alt="wifi interference">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900">Pengaruh Interferensi Wifi Terhadap Performa Jaringan</h3>
+                        <p class="mt-2 text-gray-600">bagaimana sinyal wifi dapa mengalami tabrakan dan mengakibatkan gangguan</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            
+                            <span class="inline-block bg-blue-500 text-white text-sm font-medium px-3 py-1 rounded-full">Telecomunication</span>
+                            <span class="inline-block bg-red-200 text-black text-sm font-medium px-3 py-1 rounded-full">Programming</span>
+                            <span class="inline-block bg-blue-200 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">IT</span>
+
+                        </div>
+                        <div class="mt-auto pt-6"> 
+                            <a href="#" class="inline-flex items-center gap-2 font-semibold text-gray-900 hover:text-blue-700 transition-colors">
+                                Read More
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+                    <img class="w-full h-48 object-cover" src="asset/article2.webp" alt="jeruk">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900">Bagaimana Cara Menanam Jeruk yang Baik dan Benar</h3>
+                        <p class="mt-2 text-gray-600">Bagaimana kiranya para petani jeruk menanam jeruk yang kita konsumsi sehari hari??</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            
+                            <span class="inline-block bg-green-200 text-black text-sm font-medium px-3 py-1 rounded-full">Agriculture</span>
+                            <span class="inline-block bg-green-700 text-white text-sm font-medium px-3 py-1 rounded-full">Plant</span>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="#" class="inline-flex items-center gap-2 font-semibold text-gray-900 hover:text-blue-700 transition-colors">
+                                Read More
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+                    <img class="w-full h-48 object-cover" src="asset/article3.webp" alt="programming">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900">Bagaimana Cara Membuat Aplikasi Sendiri</h3>
+                        <p class="mt-2 text-gray-600">
+                            Apakah membuat aplikasi merupakan suatu hal yang teramat sulit?? apakah mungkin untuk kita membuat aplikasi kita sendiri untuk kebutuhan pribadi??
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            
+                            <span class="inline-block bg-red-200 text-black text-sm font-medium px-3 py-1 rounded-full">Programming</span>
+                            <span class="inline-block bg-blue-200 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">IT</span>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="#" class="inline-flex items-center gap-2 font-semibold text-gray-900 hover:text-blue-700 transition-colors">
+                                Read More
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- ========== "Testimonials" Section (BARU) ========== -->
+    <section class="bg-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            
+            <!-- Header -->
+            <div class="testimonial-header max-w-2xl">
+                <p class="text-sm font-semibold tracking-wider text-blue-600 uppercase">Testimonials</p>
+                <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+                    What Our Clients Say
+                </h2>
+                <p class="mt-4 text-lg text-gray-700">
+                    Real feedback from brands we've helped grow.
+                </p>
+            </div>
+
+            <!-- Grid Kartu Testimoni -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Testimoni 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center gap-1 mb-4">
+                        <!-- Bintang 5 (Hijau) -->
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Sales pipeline finally working.</h3>
+                    <p class="mt-3 text-base text-gray-600 leading-relaxed">"Pelayanan Customer Service nya ramah sekali, penanganannya gercep nggak pakai lama."</p>
+                    <div class="mt-6 flex items-center gap-4">
+                        <img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/333/FFF?text=FM" alt="Floyd Miles">
+                        <div>
+                            <p class="text-base font-semibold text-gray-900">Susanto.</p>
+                            <p class="text-sm text-gray-600">Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center gap-1 mb-4">
+                        <!-- Bintang 4 (Hijau) -->
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Growth that felt effortless.</h3>
+                    <p class="mt-3 text-base text-gray-600 leading-relaxed">"Jaringannya stabil dan "</p>
+                    <div class="mt-6 flex items-center gap-4">
+                        <img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/DDD/333?text=LA" alt="Leslie Alexander">
+                        <div>
+                            <p class="text-base font-semibold text-gray-900">Fitri</p>
+                            <p class="text-sm text-gray-600">Ibu Rumah Tangga</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                    <div class="flex items-center gap-1 mb-4">
+                        <!-- Bintang 3.5 (Agak sulit, kita buat 4 saja) -->
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">From flat to thriving.</h3>
+                    <p class="mt-3 text-base text-gray-600 leading-relaxed">"Our growth was completely stagnant until they stepped in. Just two months later, we're rapidly hiring just to keep up with soaring demand."</p>
+                    <div class="mt-6 flex items-center gap-4">
+                        <img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/8EE3F5/1E40AF?text=EH" alt="Esther Howard">
+                        <div>
+                            <p class="text-base font-semibold text-gray-900">Esther Howard</p>
+                            <p class="text-sm text-gray-600">Creative Director</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Paginasi -->
+            <div class="mt-16 flex justify-center items-center space-x-2">
+                <button class="w-3 h-3 bg-blue-600 rounded-full transition-all duration-300"></button>
+                <button class="w-2 h-2 bg-gray-300 rounded-full transition-all duration-300 hover:bg-gray-400"></button>
+                <button class="w-2 h-2 bg-gray-300 rounded-full transition-all duration-300 hover:bg-gray-400"></button>
+            </div>
+
+        </div>
+    </section>
+ <!-- How We Work Section (from image) -->
+    <section class="py-20 animate-gradient"> <!-- Latar belakang diganti ke gradien animasi -->
+        <div class="container mx-auto px-6 max-w-6xl text-white">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left Column -->
+                <div>
+                    <h2 class="text-5xl font-bold mb-6">
+                        Proses Kerja Kami
+                    </h2>
+                    <p class="text-lg mb-8 leading-relaxed">
+                        Proses kami tidaklah rumit, beginilah cara kami menyediakan akses ke dunia yang tak terbatas di rumah anda.
+                    </p>
+                    <a href="#" class="inline-flex items-center bg-white text-blue-700 font-medium py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                        Hubungi Kami
+                        <!-- Inline SVG Arrow Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Right Column (Numbered List) -->
+                <div class="space-y-10 relative">
+                    <!-- Garis Vertikal -->
+                    <div class="absolute left-5 top-0 h-full w-0.5 bg-white opacity-30" style="transform: translateX(-1px); top: 1rem; bottom: 1rem;"></div>
+                    
+                    <!-- Item 1 -->
+                    <div class="flex relative z-10 transition-all duration-300 ease-in-out transform hover:scale-105">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-10 w-10 rounded-full border-2 border-white text-white font-bold bg-blue-600" style="background-color: #0000ff;">
+                                01
+                            </span>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-xl font-bold mb-2">daftar</h3>
+                            <p class="text-base opacity-90">
+                                registrasi mudah dan banyak promo di setiap bulan
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="flex relative z-10 transition-all duration-300 ease-in-out transform hover:scale-105">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-10 w-10 rounded-full border-2 border-white text-white font-bold" style="background-color: #0000ff;">
+                                02
+                            </span>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-xl font-bold mb-2">pasang</h3>
+                            <p class="text-base opacity-90">
+                                proses installasi kurang dari 24 jam
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="flex relative z-10 transition-all duration-300 ease-in-out transform hover:scale-105">
+                        <div class="flex-shrink-0">
+                            <span class="flex items-center justify-center h-10 w-10 rounded-full border-2 border-white text-white font-bold" style="background-color: #0000ff;">
+                                03
+                            </span>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-xl font-bold mb-2">berseluncur</h3>
+                            <p class="text-base opacity-90">
+                                voilaa, kamu bisa menikmati internet tanpa batas dengan proses yang sangat singkat
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+
+
+
+    <!-- JavaScript Kustom -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Logika Menu Mobile ---
+            const menuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Fungsi Generik untuk Animasi Scroll ---
+            function setupScrollAnimation(selector, delayMultiplier = 150) {
+                const elements = document.querySelectorAll(selector);
+                
+                const observerOptions = {
+                    root: null, // default: viewport
+                    threshold: 0.1 // 10% dari elemen harus terlihat
+                };
+
+                const observer = new IntersectionObserver((entries, observerInstance) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observerInstance.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                elements.forEach((el, index) => {
+                    // Gunakan modulo untuk me-reset delay, agar di grid 2 kolom, keduanya mulai ~bersamaan
+                    let delayIndex = index;
+                    if (selector === '.ecosystem-feature') {
+                        delayIndex = index % 2; // Untuk grid 2-kolom
+                    } else if (selector === '.service-card' || selector === '.article-card' || selector === '.testimonial-card') {
+                        delayIndex = index % 3; // Untuk grid 3-kolom
+                    } else if (selector === '.stat-item') {
+                        delayIndex = index % 4; // Untuk grid 4-kolom
+                    }
+                    
+                    // Terapkan delay multiplier yang berbeda per selector jika perlu
+                    let finalDelay = delayIndex * delayMultiplier;
+                    if (selector === '.ecosystem-feature') finalDelay = delayIndex * 100;
+                    if (selector === '.service-card') finalDelay = delayIndex * 100;
+                    if (selector === '.testimonial-card') finalDelay = delayIndex * 100;
+
+
+                    el.style.transitionDelay = `${finalDelay}ms`;
+                    observer.observe(el);
+                });
+            }
+
+            // --- Panggil Animasi untuk setiap section ---
+            setupScrollAnimation('.stat-item'); // delay 0, 150, 300, 450
+            setupScrollAnimation('.ecosystem-feature', 100); // delay 0, 100
+            
+            setupScrollAnimation('.service-header', 0); // Header muncul dulu
+            setupScrollAnimation('.service-card', 100); // Kartu layanan muncul satu per satu (0, 100, 200)
+
+            setupScrollAnimation('.article-card', 100); // delay 0, 100, 200
+
+            // BARU: Panggil animasi untuk section testimoni
+            setupScrollAnimation('.testimonial-header', 0);
+            setupScrollAnimation('.testimonial-card', 100); // delay 0, 100, 200
+        });
+    </script>
+
+</body>
+</html>

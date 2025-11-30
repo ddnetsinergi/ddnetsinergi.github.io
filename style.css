@@ -1,0 +1,230 @@
+/* Reset dasar agar tampilan konsisten */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Memberikan background abu-abu muda pada body agar navbar terlihat kontras */
+body {
+    background-color: #f0f2f5;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container Utama Navbar */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1200px; /* Batas lebar maksimal agar rapi */
+    padding: 12px 24px;
+    border-radius: 50px; /* Membuat bentuk kapsul/pill */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Bayangan halus */
+    margin-top: 20px;
+}
+
+/* Gaya Logo Teks */
+.logo {
+    font-weight: 800;
+    font-size: 20px;
+    color: #0065DE; /* Warna biru mirip logo asli */
+    cursor: pointer;
+    margin-right: 40px; /* Jarak antara logo dan menu */
+}
+
+/* Gaya Menu Links (Tengah) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Jarak antar item menu */
+    align-items: center;
+    flex-grow: 1; /* Mengisi ruang kosong agar menu ada di kiri-tengah */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Jarak teks dengan panah kecil */
+    transition: color 0.2s;
+}
+
+.nav-links li a:hover {
+    color: #0065DE;
+}
+
+/* Ikon Panah Kecil */
+.arrow {
+    stroke: #555;
+    transition: transform 0.2s;
+}
+
+.nav-links li a:hover .arrow {
+    stroke: #0065DE;
+    transform: rotate(180deg); /* Efek putar saat hover */
+}
+
+/* Bagian Kanan (Sign in & Button) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.signin-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.signin-link:hover {
+    color: #0065DE;
+}
+
+/* Tombol Get Started */
+.btn-primary {
+    background-color: #0065DE; /* Biru cerah */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px; /* Sudut membulat tombol */
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0052b5; /* Warna lebih gelap saat hover */
+}
+
+/* Responsif untuk layar kecil (Opsional - menyembunyikan menu di HP) */
+@media (max-width: 768px) {
+    .nav-links, .signin-link {
+        display: none;
+    }
+}
+
+/* Layout Section */
+.proven-numbers-section {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    color: #111;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Content */
+.header-content {
+    margin-bottom: 60px;
+}
+
+.subtitle {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.proven-numbers-section h2 {
+    font-size: 42px;
+    font-weight: 500;
+    margin: 0 0 30px 0;
+    color: #222;
+    line-height: 1.2;
+}
+
+/* Tombol Biru */
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1A33D6;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.3s;
+    box-shadow: 0 4px 15px rgba(26, 51, 214, 0.3);
+}
+
+.btn-cta:hover {
+    background-color: #1324a0;
+}
+
+/* Grid Layout */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Typography Angka */
+.stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.blue-accent {
+    color: #3b5aff;
+}
+
+/* Garis Pemisah */
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* Text Deskripsi */
+.stat-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.stat-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+/* Responsif (Mobile) */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .proven-numbers-section h2 {
+        font-size: 32px;
+    }
+}
