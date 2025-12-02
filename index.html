@@ -155,14 +155,42 @@
           animation: animatedGradient 13s ease infinite;
         }
 
+                /* Custom CSS untuk Animasi Scroll (jika Anda ingin mempertahankannya) */
+        .scroll-animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-animated.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Hover Shadow Blue 400 */
+        .pricing-card-hover:hover {
+            box-shadow: 0 10px 15px -3px rgba(96, 165, 250, 0.4), 0 4px 6px -2px rgba(96, 165, 250, 0.2);
+            border-color: #60a5fa; /* border-blue-400 */
+        }
+
+        /* Untuk membuat tombol toggle terlihat seperti pada gambar */
+        .price-toggle-container {
+            border-radius: 9999px; /* rounded-full */
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+        .price-toggle-button {
+            transition: background-color 0.2s, color 0.2s;
+        }
+
     </style>
 </head>
 <body class="bg-white text-gray-900">
 
     <!-- main begin -->
-    <div class="hero-container flex flex-col items-center justify-center">    
+    <div class="hero-container flex-col items-center justify-center">    
         <!-- navbar begin -->
-        <nav class="max-w-7xl mx-auto p-4 sm:p-5 py-4 fixed top-0 left-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto p-4 sm:p-5 py-4 fixed top-0 left-0 w-full z-50 ml-9">
             <div class="bg-blue-300/60 backdrop-blur-lg border border-blue-100/50 rounded-full flex items-center justify-between px-6 sm:px-8 py-3 shadow-xl">
                 
                 <!-- Kolom 1: Logo (Kiri) -->
@@ -254,10 +282,10 @@
             </div>
 
             <!-- Grid Fitur (di bawah header) -->
-            <div class="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- Kartu Fitur 1 -->
-                <div class="ecosystem-feature bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:-translate-y-2">
+                <div class="ecosystem-feature bg-gray-100 p-6 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:-translate-y-2">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-white text-gray-800 shadow-md">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
@@ -276,7 +304,7 @@
                 </div>
 
                 <!-- Kartu Fitur 2 -->
-                <div class="ecosystem-feature bg-gray-100 p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:-translate-y-2">
+                <div class="ecosystem-feature bg-gray-100 p-6 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-300/75 hover:-translate-y-2">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-100 text-yellow-800 shadow-md">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 8H5c-1.65 0-3 1.35-3 3v6c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-6c0-1.65-1.35-3-3-3zm-7 11c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm7-9h-4V7h4v3zM5 10V7h4v3H5z"></path></svg>
@@ -394,6 +422,179 @@
 
     <!-- ========== "Services" Section ========== -->
     
+    <section class="max-w-7xl mx-auto pt-16 pb-16">
+        <div class="flex justify-center mb-10">
+            <div id="priceToggleContainer" class="price-toggle-container flex p-1 text-sm font-medium text-gray-700 bg-gray-200">
+                <button id="toggleYearly" data-period="yearly" class="price-toggle-button px-4 py-2 bg-white text-gray-900 shadow-sm rounded-full">
+                    Bayar Perbulan
+                </button>
+                <button id="toggleMonthly" data-period="monthly" class="price-toggle-button px-4 py-2 rounded-full">
+                    Bayar Tahunan
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            
+            <!-- card 1 -->
+            <div class="pricing-card-hover w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Lite</h3>
+                <div class="mb-4">
+                    <span id="price-personal" class="text-3xl font-bold text-gray-900">IDR 110,000</span><span class="text-xl font-medium text-gray-600">/bln</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Paket Keluarga</p>
+                </div>
+                <p class="text-sm text-gray-600 mb-6">Our foundational plan with access to fully customizable, best-in-class</p>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">Berlangganan</a>
+                <hr class="my-6 border-gray-100">
+                <div class="space-y-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Mobile optimized websites
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Templates to fit every need
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Free custom domain*
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    </div>
+            </div>
+
+            <!-- card 2 -->
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border-2 border-blue-400 shadow-xl transition duration-300 scroll-animated service-card">
+                <span class="absolute -top-3 right-5 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Best Value</span>
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Business</h3>
+                <div class="mb-4">
+                    <span id="price-business" class="text-3xl font-bold text-gray-900">IDR 219,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Save 31% annually</p>
+                </div>
+                <p class="text-sm text-gray-600 mb-6">For those looking to grow their audience and begin taking payments.</p>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <hr class="my-6 border-gray-100">
+                <div class="space-y-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Mobile optimized websites
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Advanced website analytics
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    </div>
+            </div>
+            
+            <!-- card 3 -->
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
+                <span class="absolute -top-3 right-5 bg-gray-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Basic</span>
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Commerce</h3>
+                <div class="mb-4">
+                    <span id="price-commerce-basic" class="text-3xl font-bold text-gray-900">IDR 269,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Save 29% annually</p>
+                </div>
+                <p class="text-sm text-gray-600 mb-6">Selling tools to help grow your business. No transaction fees.</p>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <hr class="my-6 border-gray-100">
+                <div class="space-y-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Mobile optimized websites
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Advanced website analytics
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- card 4 -->
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
+                <span class="absolute -top-3 right-5 bg-gray-400 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Advanced</span>
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Commerce</h3>
+                <div class="mb-4">
+                    <span id="price-commerce-advanced" class="text-3xl font-bold text-gray-900">IDR 489,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Save 30% annually</p>
+                </div>
+                <p class="text-sm text-gray-600 mb-6">All the tools necessary for the more advanced seller. No transaction fees.</p>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <hr class="my-6 border-gray-100">
+                <div class="space-y-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Mobile optimized websites
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Advanced website analytics
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- card 5 -->
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
+                <span class="absolute -top-3 right-5 bg-gray-400 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Advanced</span>
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Commerce</h3>
+                <div class="mb-4">
+                    <span id="price-commerce-advanced" class="text-3xl font-bold text-gray-900">IDR 489,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Save 30% annually</p>
+                </div>
+                <p class="text-sm text-gray-600 mb-6">All the tools necessary for the more advanced seller. No transaction fees.</p>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <hr class="my-6 border-gray-100">
+                <div class="space-y-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Mobile optimized websites
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Advanced website analytics
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
 
 <!-- proven number -->
     <section class="bg-gray-100 overflow-hidden border-blue-100 px-6">
@@ -540,10 +741,10 @@
             </div>
 
             <!-- Grid Kartu Testimoni -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Testimoni 1 -->
-                <div class="testimonial-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                <div class="testimonial-card bg-white p-6 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
                     <div class="flex items-center gap-1 mb-4">
                         <!-- Bintang 5 (Hijau) -->
                         <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
@@ -564,7 +765,7 @@
                 </div>
 
                 <!-- Testimoni 2 -->
-                <div class="testimonial-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                <div class="testimonial-card bg-white p-6 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
                     <div class="flex items-center gap-1 mb-4">
                         <!-- Bintang 4 (Hijau) -->
                         <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
@@ -585,7 +786,7 @@
                 </div>
 
                 <!-- Testimoni 3 -->
-                <div class="testimonial-card bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                <div class="testimonial-card bg-white p-6 rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
                     <div class="flex items-center gap-1 mb-4">
                         <!-- Bintang 3.5 (Agak sulit, kita buat 4 saja) -->
                         <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.82 5.598h5.888c.969 0 1.371 1.24.588 1.81l-4.764 3.46l1.82 5.598c.3.921-.755 1.688-1.54 1.18l-4.764-3.46l-4.764 3.46c-.784.508-1.839-.259-1.54-1.18l1.82-5.598l-4.764-3.46c-.783-.57-.38-1.81.588-1.81h5.888L9.049 2.927z"></path></svg>
@@ -635,7 +836,7 @@
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <div class="article-card bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
                     <img class="w-full h-48 object-cover" src="asset/article1.webp" alt="wifi interference">
@@ -702,24 +903,129 @@
         </div>
     </section>
 
-
-
- 
-
-
+<footer class="bg-blue-100 py-10 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between pb-8 border-b border-gray-300 mb-8">
+      <div class="mb-4 md:mb-0">
+        <p class="text-gray-700 text-lg">
+          Get the latest news about Zorin and tips in your inbox.
+        </p>
+      </div>
+      <div>
+        <button class="bg-gray-50 text-blue-700 hover:bg-gray-200 transition duration-300 font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105">
+          Subscribe to our newsletter
+        </button>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-16 text-gray-700">
+      
+      <div>
+        <div class="mb-4">
+          <svg class="h-8 w-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+          </svg>
+        </div>
+        <p class="text-sm">
+          Made with <span class="text-green-600">☘️</span> in **Ireland**.
+        </p>
+        <div class="flex space-x-4 mt-4 text-gray-600">
+          <a href="#" class="hover:text-blue-500 transition duration-150">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M14 13.5l1 4.5h-2l-1 4h-3v-9h-2v-3h2v-2c0-2.203 1.797-4 4-4h3v3h-3c-.552 0-1 .448-1 1v2h4l-1 3h-3z"/></svg>
+          </a>
+          <a href="#" class="hover:text-gray-900 transition duration-150">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.944c2.19 0 3.19 1 3.19 3.19v15.732c0 2.19-1 3.19-3.19 3.19H5.099c-2.19 0-3.19-1-3.19-3.19V5.134c0-2.19 1-3.19 3.19-3.19h13.802zm-5.69 16.32l-3.32-4.14-5.69 4.14-1.28-1.58 5.69-4.14-5.69-4.14 1.28-1.58 5.69 4.14 3.32-4.14 1.28 1.58-3.32 4.14 3.32 4.14-1.28 1.58z"/></svg>
+          </a>
+          <a href="#" class="hover:text-orange-600 transition duration-150">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 17c0 1.657-1.343 3-3 3H5c-1.657 0-3-1.343-3-3v-1c0-1.657 1.343-3 3-3h14c1.657 0 3 1.343 3 3v1zm-3-1c.552 0 1 .448 1 1s-.448 1-1 1h-2c-.552 0-1-.448-1-1s.448-1 1-1h2zm-4 0c.552 0 1 .448 1 1s-.448 1-1 1h-2c-.552 0-1-.448-1-1s.448-1 1-1h2zm-4 0c.552 0 1 .448 1 1s-.448 1-1 1H7c-.552 0-1-.448-1-1s.448-1 1-1h2zM2 12c0-5.523 4.477-10 10-10s10 4.477 10 10H2zM4 12c0-4.418 3.582-8 8-8s8 3.582 8 8H4zM6 12c0-3.314 2.686-6 6-6s6 2.686 6 6H6z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="font-bold uppercase text-gray-900 mb-3">PRODUCTS</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">Packet Lite</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">Packet Basic</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">Packer Plus</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">Packer Pro</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">Packer Business</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="font-bold uppercase text-gray-900 mb-3">HELP</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">cara daftar</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">Daftar Paket</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">ganti password</a></li>
+          <li><a href="#" class="hover:text-blue-500 transition duration-150">jeruk segar</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="font-bold uppercase text-gray-900 mb-3">MAPS: PT DDNet Sinergi Telekomunikasi</h3>
+        
+        <div class="w-full h-40 bg-gray-300 rounded overflow-hidden shadow-md">
+          <iframe 
+            src="[GANTI DENGAN KODE IFRAME GOOGLE MAPS PT DDNET DI SINI]" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi PT DDNet Sinergi Telekomunikasi"
+            class="hover:opacity-90 transition duration-300"
+          >
+            <div class="flex items-center justify-center h-full text-center text-sm text-gray-600 p-2">
+                Peta tidak dapat dimuat. Silakan ganti bagian src iframe dengan kode embed Google Maps PT DDNet.
+            </div>
+          </iframe>
+        </div>
+        
+        <p class="text-xs text-gray-500 mt-2">
+            Peta di atas menunjukkan lokasi kantor kami.
+        </p>
+        
+      </div>
+      
+    </div>
+    
+    <div class="mt-12 pt-6 border-t border-gray-300 text-center text-xs text-gray-500">
+      <p class="mb-2">
+        © 2008 - 2025 PT. Ddnet Sinergi Telekomunikasi . All Rights Reserved.
+      </p>
+      <p class="mb-4">
+        Any trademarks or logos used on this site are property of their respective owners.
+      </p>
+      <div class="flex justify-center space-x-4">
+        <a href="#" class="hover:text-gray-700 underline transition duration-150">Terms of Service</a>
+        <a href="#" class="hover:text-gray-700 underline transition duration-150">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-700 underline transition duration-150">Cookies Policy</a>
+      </div>
+    </div>
+    
+  </div>
+</footer>
 
     <!-- JavaScript Kustom -->
     <script>
+        // Kode existing Anda
         document.addEventListener('DOMContentLoaded', function() {
             // --- Logika Menu Mobile ---
             const menuButton = document.getElementById('mobileMenuButton');
             const mobileMenu = document.getElementById('mobileMenu');
 
-            menuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
 
-            // --- Fungsi Generik untuk Animasi Scroll ---
+
+            // --- Fungsi Generik untuk Animasi Scroll (TIDAK BERUBAH) ---
             function setupScrollAnimation(selector, delayMultiplier = 150) {
                 const elements = document.querySelectorAll(selector);
                 
@@ -743,7 +1049,7 @@
                     if (selector === '.ecosystem-feature') {
                         delayIndex = index % 2; // Untuk grid 2-kolom
                     } else if (selector === '.service-card' || selector === '.article-card' || selector === '.testimonial-card') {
-                        delayIndex = index % 3; // Untuk grid 3-kolom
+                        delayIndex = index % 4; // DIUBAH: Menggunakan % 4 karena ada 4 kartu harga
                     } else if (selector === '.stat-item') {
                         delayIndex = index % 4; // Untuk grid 4-kolom
                     }
@@ -751,7 +1057,7 @@
                     // Terapkan delay multiplier yang berbeda per selector jika perlu
                     let finalDelay = delayIndex * delayMultiplier;
                     if (selector === '.ecosystem-feature') finalDelay = delayIndex * 100;
-                    if (selector === '.service-card') finalDelay = delayIndex * 100;
+                    if (selector === '.service-card') finalDelay = delayIndex * 100; // Delay kartu harga 0, 100, 200, 300
                     if (selector === '.testimonial-card') finalDelay = delayIndex * 100;
 
 
@@ -760,7 +1066,7 @@
                 });
             }
 
-            // --- Panggil Animasi untuk setiap section ---
+            // --- Panggil Animasi untuk setiap section (TIDAK BERUBAH) ---
             setupScrollAnimation('.stat-item'); // delay 0, 150, 300, 450
             setupScrollAnimation('.ecosystem-feature', 100); // delay 0, 100
             
@@ -772,6 +1078,62 @@
             // BARU: Panggil animasi untuk section testimoni
             setupScrollAnimation('.testimonial-header', 0);
             setupScrollAnimation('.testimonial-card', 100); // delay 0, 100, 200
+
+            // -------------------------------------------------------------
+            // --- Logika Baru untuk Toggle Harga Tahunan/Bulanan ---
+            // -------------------------------------------------------------
+            const priceData = {
+                yearly: {
+                    'price-personal': 'IDR 110,000',
+                    'price-business': 'IDR 219,900',
+                    'price-commerce-basic': 'IDR 269,900',
+                    'price-commerce-advanced': 'IDR 489,900'
+                },
+                monthly: {
+                    // Harga Bulanan (Asumsi kenaikan harga ~28%-31% dari harga tahunan)
+                    'price-personal': 'IDR 219,900',
+                    'price-business': 'IDR 319,900',
+                    'price-commerce-basic': 'IDR 379,900',
+                    'price-commerce-advanced': 'IDR 699,900'
+                }
+            };
+
+            const toggleYearly = document.getElementById('toggleYearly');
+            const toggleMonthly = document.getElementById('toggleMonthly');
+            const buttons = [toggleYearly, toggleMonthly];
+
+            function updatePrices(period) {
+                for (const id in priceData[period]) {
+                    const priceElement = document.getElementById(id);
+                    if (priceElement) {
+                        priceElement.textContent = priceData[period][id];
+                    }
+                }
+            }
+
+            function updateToggleStyle(activeButton) {
+                buttons.forEach(button => {
+                    button.classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
+                    button.classList.add('bg-transparent', 'text-gray-700');
+                });
+
+                activeButton.classList.add('bg-white', 'text-gray-900', 'shadow-sm');
+                activeButton.classList.remove('bg-transparent', 'text-gray-700');
+            }
+
+            // Inisialisasi: Atur ke 'yearly' secara default
+            updatePrices('yearly');
+            updateToggleStyle(toggleYearly);
+
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const period = this.getAttribute('data-period');
+                    updatePrices(period);
+                    updateToggleStyle(this);
+                });
+            });
+
         });
     </script>
 
