@@ -6,72 +6,8 @@
     <title>DDNet - Welcome to the Future</title>
     
     <!-- Memuat Tailwind CSS dari CDN -->
-    <!-- Tambahkan ini di dalam <head> -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-
-        /* CSS Tambahan - Copy ini ke dalam <style> tag yang sudah ada */
-
-        /* Efek untuk button disabled */
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Efek hover untuk button yang tidak disabled */
-        #prevBtn:not(:disabled):hover,
-        #nextBtn:not(:disabled):hover {
-            transform: scale(1.1);
-            color: #f97316; /* orange-500 */
-        }
-
-        /* Animasi smooth untuk carousel */
-        #slider-track {
-            transition: transform 0.5s ease;
-        }
-
-        /* Efek untuk card */
-        .card-item {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card-item:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Efek untuk tombol dalam card */
-        .card-item button {
-            transition: all 0.2s ease;
-        }
-
-        .card-item button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .card-item {
-                width: 280px !important;
-            }
-            
-            #slider-track {
-                gap: 12px;
-            }
-        }
-
-        /* Loading state */
-        #slider-track.loading {
-            opacity: 0.7;
-        }
-
-        /* Active card highlight */
-        .card-item.scale-100 {
-            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.2) !important;
-        }
-  
         /* Menambahkan font Inter */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
@@ -457,272 +393,8 @@
     </section>
 
     <!-- ========== "Services" Section ========== -->
+    
 
-    <!-- product section -->
-    <!-- ========== Product Section (Carousel) ========== -->
-    <!-- ========== Product Section (Carousel) ========== -->
-    <section class="bg-gradient-to-br from-orange-50 to-orange-100 min-h-screen flex items-center justify-center overflow-hidden py-8 md:py-12">
-        <div class="container mx-auto px-4 md:px-6 relative w-full max-w-6xl">
-            
-            <!-- Header Text -->
-            <div class="text-center mb-8 md:mb-12">
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 px-4">
-                    Pilih Paket Langganan
-                </h1>
-                <p class="text-gray-500 text-sm md:text-base px-4">
-                    Geser untuk melihat penawaran terbaik kami
-                </p>
-            </div>
-
-            <!-- Carousel Wrapper -->
-            <div class="relative w-full h-[450px] sm:h-[500px] md:h-[550px] flex items-center justify-center perspective-1000 px-2">
-                
-                <!-- Track Container -->
-                <div id="slider-track" class="flex items-center gap-3 sm:gap-4 absolute transition-transform duration-500 ease-out will-change-transform">
-                    
-                    <!-- CARD 1: Starter -->
-                    <div class="card-item w-[260px] sm:w-[280px] md:w-[300px] h-[380px] sm:h-[400px] md:h-[420px] bg-white rounded-3xl shadow-lg p-4 sm:p-5 md:p-6 flex flex-col items-center justify-between border border-gray-100 opacity-60 scale-90 cursor-pointer transition-all duration-300" data-index="0">
-                        <div class="text-center">
-                            <div class="bg-blue-100 p-2 sm:p-3 rounded-full inline-block mb-3 sm:mb-4">
-                                <!-- SVG Sprout Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-500">
-                                    <path d="M7 20h10"></path>
-                                    <path d="M10 20c5.5-2.5.8-6.4 3-10"></path>
-                                    <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path>
-                                    <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.1-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.7 2z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg sm:text-xl md:text-xl font-bold text-gray-700">Starter</h3>
-                            <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Untuk pemula</p>
-                        </div>
-                        <div class="text-center my-3 sm:my-4">
-                            <span class="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-800">Rp 0</span>
-                            <span class="text-xs sm:text-sm text-gray-400">/bln</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2 w-full px-3 sm:px-4 mb-3 sm:mb-4">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                1 Project
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                Basic Analytics
-                            </li>
-                        </ul>
-                        <button class="w-full py-2 sm:py-3 rounded-xl bg-gray-100 text-gray-600 text-sm sm:text-base font-semibold hover:bg-gray-200 transition">
-                            Pilih Paket
-                        </button>
-                    </div>
-
-                    <!-- CARD 2: Basic -->
-                    <div class="card-item w-[260px] sm:w-[280px] md:w-[300px] h-[380px] sm:h-[400px] md:h-[420px] bg-white rounded-3xl shadow-lg p-4 sm:p-5 md:p-6 flex flex-col items-center justify-between border border-gray-100 opacity-60 scale-90 cursor-pointer transition-all duration-300" data-index="1">
-                        <div class="text-center">
-                            <div class="bg-green-100 p-2 sm:p-3 rounded-full inline-block mb-3 sm:mb-4">
-                                <!-- SVG Box Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-green-500">
-                                    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
-                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
-                                    <path d="M12 22V12"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg sm:text-xl md:text-xl font-bold text-gray-700">Basic</h3>
-                            <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Kebutuhan dasar</p>
-                        </div>
-                        <div class="text-center my-3 sm:my-4">
-                            <span class="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-800">Rp 50k</span>
-                            <span class="text-xs sm:text-sm text-gray-400">/bln</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2 w-full px-3 sm:px-4 mb-3 sm:mb-4">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                5 Projects
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                Email Support
-                            </li>
-                        </ul>
-                        <button class="w-full py-2 sm:py-3 rounded-xl bg-green-50 text-green-600 text-sm sm:text-base font-semibold hover:bg-green-100 transition">
-                            Pilih Paket
-                        </button>
-                    </div>
-
-                    <!-- CARD 3: Premium (Tengah Awal) -->
-                    <div class="card-item w-[260px] sm:w-[280px] md:w-[300px] h-[380px] sm:h-[400px] md:h-[420px] bg-white rounded-3xl shadow-2xl p-6 sm:p-7 md:p-8 flex flex-col items-center justify-between border-2 border-orange-500 relative z-20 scale-100 opacity-100 cursor-pointer transition-all duration-300" data-index="2">
-                        <!-- Badge -->
-                        <div class="absolute -top-3 sm:-top-4 bg-orange-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs font-bold tracking-wide shadow-md">
-                            POPULER
-                        </div>
-                        
-                        <div class="text-center mt-1 sm:mt-2">
-                            <div class="bg-orange-100 p-3 sm:p-4 rounded-full inline-block mb-3 sm:mb-4">
-                                <!-- SVG Crown Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-orange-500">
-                                    <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z"></path>
-                                    <path d="M3 4h7"></path>
-                                    <path d="M14 4h7"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl md:text-2xl font-bold text-gray-800">Premium</h3>
-                            <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Paling diminati</p>
-                        </div>
-                        <div class="text-center my-3 sm:my-4">
-                            <span class="text-3xl sm:text-4xl md:text-4xl font-bold text-orange-600">Rp 150k</span>
-                            <span class="text-xs sm:text-sm text-gray-400">/bln</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-gray-600 space-y-2 sm:space-y-3 w-full px-3 sm:px-4 mb-4 sm:mb-6">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-orange-500">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                                Unlimited Projects
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-orange-500">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                                Priority Support
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-orange-500">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                                50GB Storage
-                            </li>
-                        </ul>
-                        <button class="w-full py-2 sm:py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white text-sm sm:text-base font-bold shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition transform">
-                            Beli Sekarang
-                        </button>
-                    </div>
-
-                    <!-- CARD 4: Business -->
-                    <div class="card-item w-[260px] sm:w-[280px] md:w-[300px] h-[380px] sm:h-[400px] md:h-[420px] bg-white rounded-3xl shadow-lg p-4 sm:p-5 md:p-6 flex flex-col items-center justify-between border border-gray-100 opacity-60 scale-90 cursor-pointer transition-all duration-300" data-index="3">
-                        <div class="text-center">
-                            <div class="bg-purple-100 p-2 sm:p-3 rounded-full inline-block mb-3 sm:mb-4">
-                                <!-- SVG Briefcase Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-purple-500">
-                                    <path d="M12 22v-5"></path>
-                                    <path d="M9 8V2"></path>
-                                    <path d="M15 8V2"></path>
-                                    <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg sm:text-xl md:text-xl font-bold text-gray-700">Business</h3>
-                            <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Untuk tim kecil</p>
-                        </div>
-                        <div class="text-center my-3 sm:my-4">
-                            <span class="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-800">Rp 300k</span>
-                            <span class="text-xs sm:text-sm text-gray-400">/bln</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2 w-full px-3 sm:px-4 mb-3 sm:mb-4">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                10 Users
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                1TB Storage
-                            </li>
-                        </ul>
-                        <button class="w-full py-2 sm:py-3 rounded-xl bg-purple-50 text-purple-600 text-sm sm:text-base font-semibold hover:bg-purple-100 transition">
-                            Pilih Paket
-                        </button>
-                    </div>
-
-                    <!-- CARD 5: Enterprise -->
-                    <div class="card-item w-[260px] sm:w-[280px] md:w-[300px] h-[380px] sm:h-[400px] md:h-[420px] bg-white rounded-3xl shadow-lg p-4 sm:p-5 md:p-6 flex flex-col items-center justify-between border border-gray-100 opacity-60 scale-90 cursor-pointer transition-all duration-300" data-index="4">
-                        <div class="text-center">
-                            <div class="bg-slate-100 p-2 sm:p-3 rounded-full inline-block mb-3 sm:mb-4">
-                                <!-- SVG Building Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-slate-700">
-                                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
-                                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
-                                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
-                                    <path d="M10 6h4"></path>
-                                    <path d="M10 10h4"></path>
-                                    <path d="M10 14h4"></path>
-                                    <path d="M10 18h4"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg sm:text-xl md:text-xl font-bold text-gray-700">Enterprise</h3>
-                            <p class="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-2">Skala besar</p>
-                        </div>
-                        <div class="text-center my-3 sm:my-4">
-                            <span class="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-800">Rp 900k</span>
-                            <span class="text-xs sm:text-sm text-gray-400">/bln</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2 w-full px-3 sm:px-4 mb-3 sm:mb-4">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                Custom Solution
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-green-500">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                24/7 Support
-                            </li>
-                        </ul>
-                        <button class="w-full py-2 sm:py-3 rounded-xl bg-slate-800 text-white text-sm sm:text-base font-semibold hover:bg-slate-900 transition">
-                            Hubungi Sales
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="flex justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
-                <button id="prevBtn" 
-                        class="bg-white p-3 sm:p-4 rounded-full shadow-lg text-gray-600 hover:text-orange-500 hover:scale-110 transition-all focus:outline-none ring-1 ring-gray-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:text-gray-600">
-                    <!-- SVG Panah Kiri -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                         class="w-5 h-5 sm:w-6 sm:h-6">
-                        <path d="m15 18-6-6 6-6"/>
-                    </svg>
-                </button>
-                
-                <button id="nextBtn" 
-                        class="bg-white p-3 sm:p-4 rounded-full shadow-lg text-gray-600 hover:text-orange-500 hover:scale-110 transition-all focus:outline-none ring-1 ring-gray-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:text-gray-600">
-                    <!-- SVG Panah Kanan -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                         class="w-5 h-5 sm:w-6 sm:h-6">
-                        <path d="m9 18 6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Indicators (Mobile) -->
-            <div class="flex justify-center gap-2 mt-4 sm:hidden">
-                <div class="w-2 h-2 rounded-full bg-gray-300 indicator active"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-300 indicator"></div>
-                <div class="w-2 h-2 rounded-full bg-orange-500 indicator"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-300 indicator"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-300 indicator"></div>
-            </div>
-
-        </div>
-    </section>
-<!-- product section end -->
 <!-- proven number -->
     <section class="bg-gray-100 overflow-hidden border-blue-100 px-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
@@ -1031,201 +703,76 @@
     </section>
 
 
+
+ 
+
+
+
     <!-- JavaScript Kustom -->
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // ========== CAROUSEL RESPONSIF ==========
-            const track = document.getElementById('slider-track');
-            const cards = document.querySelectorAll('.card-item');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const indicators = document.querySelectorAll('.indicator');
-            
-            if (track && cards.length > 0 && prevBtn && nextBtn) {
-                let currentIndex = 2; // Mulai dari card Premium
-                let autoSlideInterval;
-                let isTouchDevice = 'ontouchstart' in window;
-                
-                // Fungsi untuk mendapatkan ukuran card berdasarkan screen size
-                function getCardWidth() {
-                    if (window.innerWidth < 640) { // mobile
-                        return 260;
-                    } else if (window.innerWidth < 768) { // sm
-                        return 280;
-                    } else { // md ke atas
-                        return 300;
-                    }
-                }
-                
-                function getGapSize() {
-                    if (window.innerWidth < 640) {
-                        return 12; // gap-3
-                    } else {
-                        return 16; // gap-4
-                    }
-                }
-                
-                // Update carousel
-                function updateCarousel() {
-                    const cardWidth = getCardWidth();
-                    const gap = getGapSize();
-                    const offset = -(currentIndex - 2) * (cardWidth + gap);
-                    
-                    track.style.transform = `translateX(${offset}px)`;
-                    
-                    // Update card styles
-                    cards.forEach((card, index) => {
-                        if (index === currentIndex) {
-                            // Card aktif
-                            card.classList.remove('opacity-60', 'scale-90');
-                            card.classList.add('scale-100', 'opacity-100');
-                            card.style.filter = "blur(0px)";
-                        } else {
-                            // Card tidak aktif
-                            card.classList.remove('scale-100', 'opacity-100');
-                            card.classList.add('opacity-60', 'scale-90');
-                            card.style.filter = "blur(1px)";
-                        }
-                    });
-                    
-                    // Update indicators
-                    if (indicators.length > 0) {
-                        indicators.forEach((indicator, index) => {
-                            if (index === currentIndex) {
-                                indicator.classList.remove('bg-gray-300');
-                                indicator.classList.add('bg-orange-500');
-                                indicator.classList.add('active');
-                            } else {
-                                indicator.classList.remove('bg-orange-500');
-                                indicator.classList.remove('active');
-                                indicator.classList.add('bg-gray-300');
-                            }
-                        });
-                    }
-                    
-                    // Update button states
-                    prevBtn.disabled = currentIndex === 0;
-                    nextBtn.disabled = currentIndex === cards.length - 1;
-                }
-                
-                // Navigasi
-                function nextCard() {
-                    if (currentIndex < cards.length - 1) {
-                        currentIndex++;
-                        updateCarousel();
-                    }
-                }
-                
-                function prevCard() {
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        updateCarousel();
-                    }
-                }
-                
-                function goToCard(index) {
-                    if (index >= 0 && index < cards.length) {
-                        currentIndex = index;
-                        updateCarousel();
-                    }
-                }
-                
-                // Event Listeners
-                nextBtn.addEventListener('click', nextCard);
-                prevBtn.addEventListener('click', prevCard);
-                
-                // Klik card
-                cards.forEach((card, index) => {
-                    card.addEventListener('click', () => {
-                        if (index !== currentIndex) {
-                            goToCard(index);
-                        }
-                    });
-                });
-                
-                // Klik indicator
-                if (indicators.length > 0) {
-                    indicators.forEach((indicator, index) => {
-                        indicator.addEventListener('click', () => {
-                            goToCard(index);
-                        });
-                    });
-                }
-                
-                // Touch/swipe untuk mobile
-                let touchStartX = 0;
-                let touchEndX = 0;
-                
-                if (isTouchDevice) {
-                    track.addEventListener('touchstart', (e) => {
-                        touchStartX = e.changedTouches[0].screenX;
-                    }, { passive: true });
-                    
-                    track.addEventListener('touchend', (e) => {
-                        touchEndX = e.changedTouches[0].screenX;
-                        handleSwipe();
-                    }, { passive: true });
-                }
-                
-                function handleSwipe() {
-                    const swipeThreshold = 50;
-                    const diff = touchStartX - touchEndX;
-                    
-                    if (Math.abs(diff) > swipeThreshold) {
-                        if (diff > 0) {
-                            // Swipe left - next
-                            nextCard();
-                        } else {
-                            // Swipe right - previous
-                            prevCard();
-                        }
-                    }
-                }
-                
-                // // Auto slide (hanya di desktop)
-                // function startAutoSlide() {
-                //     if (!isTouchDevice && window.innerWidth >= 768) {
-                //         autoSlideInterval = setInterval(() => {
-                //             nextCard();
-                //         }, 4000);
-                //     }
-                // }
-                
-                // function stopAutoSlide() {
-                //     clearInterval(autoSlideInterval);
-                // }
-                
-                // Pause auto slide saat hover
-                // track.addEventListener('mouseenter', stopAutoSlide);
-                // track.addEventListener('mouseleave', startAutoSlide);
-                
-                // Keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        e.preventDefault();
-                        prevCard();
-                    } else if (e.key === 'ArrowRight') {
-                        e.preventDefault();
-                        nextCard();
-                    }
-                });
-                
-                // Resize handler
-                window.addEventListener('resize', () => {
-                    updateCarousel();
-                    stopAutoSlide();
-                    startAutoSlide();
-                });
-                
-                // Initialize
-                updateCarousel();
-                startAutoSlide();
-            }
-            
-        });
+            // --- Logika Menu Mobile ---
+            const menuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
 
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Fungsi Generik untuk Animasi Scroll ---
+            function setupScrollAnimation(selector, delayMultiplier = 150) {
+                const elements = document.querySelectorAll(selector);
+                
+                const observerOptions = {
+                    root: null, // default: viewport
+                    threshold: 0.1 // 10% dari elemen harus terlihat
+                };
+
+                const observer = new IntersectionObserver((entries, observerInstance) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observerInstance.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                elements.forEach((el, index) => {
+                    // Gunakan modulo untuk me-reset delay, agar di grid 2 kolom, keduanya mulai ~bersamaan
+                    let delayIndex = index;
+                    if (selector === '.ecosystem-feature') {
+                        delayIndex = index % 2; // Untuk grid 2-kolom
+                    } else if (selector === '.service-card' || selector === '.article-card' || selector === '.testimonial-card') {
+                        delayIndex = index % 3; // Untuk grid 3-kolom
+                    } else if (selector === '.stat-item') {
+                        delayIndex = index % 4; // Untuk grid 4-kolom
+                    }
+                    
+                    // Terapkan delay multiplier yang berbeda per selector jika perlu
+                    let finalDelay = delayIndex * delayMultiplier;
+                    if (selector === '.ecosystem-feature') finalDelay = delayIndex * 100;
+                    if (selector === '.service-card') finalDelay = delayIndex * 100;
+                    if (selector === '.testimonial-card') finalDelay = delayIndex * 100;
+
+
+                    el.style.transitionDelay = `${finalDelay}ms`;
+                    observer.observe(el);
+                });
+            }
+
+            // --- Panggil Animasi untuk setiap section ---
+            setupScrollAnimation('.stat-item'); // delay 0, 150, 300, 450
+            setupScrollAnimation('.ecosystem-feature', 100); // delay 0, 100
+            
+            setupScrollAnimation('.service-header', 0); // Header muncul dulu
+            setupScrollAnimation('.service-card', 100); // Kartu layanan muncul satu per satu (0, 100, 200)
+
+            setupScrollAnimation('.article-card', 100); // delay 0, 100, 200
+
+            // BARU: Panggil animasi untuk section testimoni
+            setupScrollAnimation('.testimonial-header', 0);
+            setupScrollAnimation('.testimonial-card', 100); // delay 0, 100, 200
+        });
     </script>
 
 </body>
