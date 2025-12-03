@@ -425,10 +425,10 @@
     <section class="max-w-7xl mx-auto pt-16 pb-16">
         <div class="flex justify-center mb-10">
             <div id="priceToggleContainer" class="price-toggle-container flex p-1 text-sm font-medium text-gray-700 bg-gray-200">
-                <button id="toggleYearly" data-period="yearly" class="price-toggle-button px-4 py-2 bg-white text-gray-900 shadow-sm rounded-full">
+                <button id="toggleMonthly" data-period="monthly" class="price-toggle-button px-4 py-2 bg-white text-gray-900 shadow-sm rounded-full">
                     Bayar Perbulan
                 </button>
-                <button id="toggleMonthly" data-period="monthly" class="price-toggle-button px-4 py-2 rounded-full">
+                <button id="toggleYearly" data-period="yearly" class="price-toggle-button px-4 py-2 rounded-full">
                     Bayar Tahunan
                 </button>
             </div>
@@ -437,35 +437,35 @@
         <div class="flex flex-wrap justify-center gap-6">
             
             <!-- card 1 -->
-            <div class="pricing-card-hover w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
+            <div class="pricing-card-hover w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-300 transition duration-300 scroll-animated service-card">
                 <h3 class="text-xl font-semibold text-gray-900 mb-1">Lite</h3>
                 <div class="mb-4">
-                    <span id="price-personal" class="text-3xl font-bold text-gray-900">IDR 110,000</span><span class="text-xl font-medium text-gray-600">/bln</span>
-                    <p class="text-sm text-green-600 font-medium mt-1">Paket Keluarga</p>
+                    <span id="price-lite" class="text-3xl font-bold text-gray-900">IDR 110.000</span><span id="timestamp-lite" class="text-xl font-medium text-gray-600">/bln</span>
+                    <p class="text-xs text-green-600 font-medium mt-1">Berlangganan Tahunan, Gratis 1 Bulan !!</p>
                 </div>
                 <p class="text-sm text-gray-600 mb-6">Our foundational plan with access to fully customizable, best-in-class</p>
-                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">Berlangganan</a>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">BERLANGGANAN</a>
                 <hr class="my-6 border-gray-100">
                 <div class="space-y-3 text-sm">
                     <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mobile optimized websites
+                            Gratis Sewa Modem (CPE)
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Templates to fit every need
+                            Kecepatan up to 5 Mbps
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Free custom domain*
+                            Kuota Unlimited
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
@@ -473,59 +473,72 @@
             </div>
 
             <!-- card 2 -->
-            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border-2 border-blue-400 shadow-xl transition duration-300 scroll-animated service-card">
-                <span class="absolute -top-3 right-5 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Best Value</span>
-                <h3 class="text-xl font-semibold text-gray-900 mb-1">Business</h3>
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-300 transition duration-300 scroll-animated service-card">
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Basic</h3>
                 <div class="mb-4">
-                    <span id="price-business" class="text-3xl font-bold text-gray-900">IDR 219,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
-                    <p class="text-sm text-green-600 font-medium mt-1">Save 31% annually</p>
+                    <span id="price-basic" class="text-3xl font-bold text-gray-900">IDR 150.000</span><span id="timestamp-basic" class="text-xl font-medium text-gray-600">/bln</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Berlangganan Tahunan, Gratis 1 Bulan !!</p>
                 </div>
                 <p class="text-sm text-gray-600 mb-6">For those looking to grow their audience and begin taking payments.</p>
-                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">BERLANGGANAN</a>
                 <hr class="my-6 border-gray-100">
                 <div class="space-y-3 text-sm">
                     <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mobile optimized websites
+                            Gratis Sewa Modem (CPE)
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Advanced website analytics
+                            Kecepatan up to 7 Mbps
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Kuota Unlimited
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
+                </div>
             </div>
             
             <!-- card 3 -->
-            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
-                <span class="absolute -top-3 right-5 bg-gray-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Basic</span>
-                <h3 class="text-xl font-semibold text-gray-900 mb-1">Commerce</h3>
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border-2 border-blue-400 shadow-xl transition duration-300 scroll-animated service-card">
+                <span class="absolute -top-3 right-5 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Best Value</span>
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Plus</h3>
                 <div class="mb-4">
-                    <span id="price-commerce-basic" class="text-3xl font-bold text-gray-900">IDR 269,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
-                    <p class="text-sm text-green-600 font-medium mt-1">Save 29% annually</p>
+                    <span id="price-plus" class="text-3xl font-bold text-gray-900">IDR 165.000</span><span id="timestamp-plus" class="text-xl font-medium text-gray-600">/bln</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Berlangganan Tahunan, Gratis 1 Bulan !!</p>
                 </div>
                 <p class="text-sm text-gray-600 mb-6">Selling tools to help grow your business. No transaction fees.</p>
-                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">BERLANGGANAN</a>
                 <hr class="my-6 border-gray-100">
                 <div class="space-y-3 text-sm">
                     <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mobile optimized websites
+                            Gratis Sewa Modem (CPE)
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Advanced website analytics
+                            Kecepatan up to 10 Mbps
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Kuota Unlimited
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
@@ -533,29 +546,35 @@
             </div>
 
             <!-- card 4 -->
-            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
-                <span class="absolute -top-3 right-5 bg-gray-400 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Advanced</span>
-                <h3 class="text-xl font-semibold text-gray-900 mb-1">Commerce</h3>
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-300 transition duration-300 scroll-animated service-card">
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Pro</h3>
                 <div class="mb-4">
-                    <span id="price-commerce-advanced" class="text-3xl font-bold text-gray-900">IDR 489,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
-                    <p class="text-sm text-green-600 font-medium mt-1">Save 30% annually</p>
+                    <span id="price-pro" class="text-3xl font-bold text-gray-900">IDR 220.000</span><span id="timestamp-pro" class="text-xl font-medium text-gray-600">/bln</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Berlangganan Tahunan, Gratis 1 Bulan !!</</p>
                 </div>
                 <p class="text-sm text-gray-600 mb-6">All the tools necessary for the more advanced seller. No transaction fees.</p>
-                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">BERLANGGANAN</a>
                 <hr class="my-6 border-gray-100">
                 <div class="space-y-3 text-sm">
                     <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mobile optimized websites
+                            Gratis Sewa Modem (CPE)
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Advanced website analytics
+                            Kecepatan up to 15 Mbps
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Kuota Unlimited
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
@@ -563,29 +582,35 @@
             </div>
 
             <!-- card 5 -->
-            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-200 transition duration-300 scroll-animated service-card">
-                <span class="absolute -top-3 right-5 bg-gray-400 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Advanced</span>
-                <h3 class="text-xl font-semibold text-gray-900 mb-1">Commerce</h3>
+            <div class="pricing-card-hover relative w-full max-w-sm lg:max-w-xs bg-white p-6 m-4 rounded-xl border border-gray-300 transition duration-300 scroll-animated service-card">
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">Business</h3>
                 <div class="mb-4">
-                    <span id="price-commerce-advanced" class="text-3xl font-bold text-gray-900">IDR 489,900</span><span class="text-xl font-medium text-gray-600">/mo</span>
-                    <p class="text-sm text-green-600 font-medium mt-1">Save 30% annually</p>
+                    <span id="price-business" class="text-3xl font-bold text-gray-900">IDR 330.000</span><span id="timestamp-business" class="text-xl font-medium text-gray-600">/bln</span>
+                    <p class="text-sm text-green-600 font-medium mt-1">Berlangganan Tahunan, Gratis 1 Bulan !!</p>
                 </div>
                 <p class="text-sm text-gray-600 mb-6">All the tools necessary for the more advanced seller. No transaction fees.</p>
-                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">GET STARTED</a>
+                <a href="#" class="block w-full text-center py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150">BERLANGGANAN</a>
                 <hr class="my-6 border-gray-100">
                 <div class="space-y-3 text-sm">
                     <h4 class="font-semibold text-gray-900 mb-3">Build your website</h4>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mobile optimized websites
+                            Gratis Sewa Modem (CPE)
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex items-center justify-between text-gray-600">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Advanced website analytics
+                            Kecepatan up to 20 Mbps
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="flex items-center justify-between text-gray-600">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Kuota Unlimited
                         </span>
                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
@@ -1084,17 +1109,35 @@
             // -------------------------------------------------------------
             const priceData = {
                 yearly: {
-                    'price-personal': 'IDR 110,000',
-                    'price-business': 'IDR 219,900',
-                    'price-commerce-basic': 'IDR 269,900',
-                    'price-commerce-advanced': 'IDR 489,900'
+                    'price-lite': 'IDR 1.210.000',
+                    'price-basic': 'IDR 1.650.000',
+                    'price-plus': 'IDR 1.815.000',
+                    'price-pro': 'IDR 2.420.000',
+                    'price-business': 'IDR 3.630.000'
                 },
                 monthly: {
-                    // Harga Bulanan (Asumsi kenaikan harga ~28%-31% dari harga tahunan)
-                    'price-personal': 'IDR 219,900',
-                    'price-business': 'IDR 319,900',
-                    'price-commerce-basic': 'IDR 379,900',
-                    'price-commerce-advanced': 'IDR 699,900'
+                    'price-lite': 'IDR 110.000',
+                    'price-basic': 'IDR 150.000',
+                    'price-plus': 'IDR 165.000',
+                    'price-pro': 'IDR 220.000',
+                    'price-business': 'IDR 330.000'
+                }
+            };
+
+            const timeStamp = {
+                yearly: {
+                    'timestamp-lite': '/thn',
+                    'timestamp-basic': '/thn',
+                    'timestamp-plus': '/thn',
+                    'timestamp-pro': '/thn',
+                    'timestamp-business': '/thn'
+                },
+                monthly: {
+                    'timestamp-lite': '/bln',
+                    'timestamp-basic': '/bln',
+                    'timestamp-plus': '/bln',
+                    'timestamp-pro': '/bln',
+                    'timestamp-business': '/bln'
                 }
             };
 
@@ -1111,6 +1154,16 @@
                 }
             }
 
+            function updateTime(period) {
+                for (const id in timeStamp[period]) {
+                    const timeElement = document.getElementById(id);
+                    if (timeElement) {
+                        timeElement.textContent = timeStamp[period][id];
+                    }
+                }
+            }
+
+
             function updateToggleStyle(activeButton) {
                 buttons.forEach(button => {
                     button.classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
@@ -1122,14 +1175,15 @@
             }
 
             // Inisialisasi: Atur ke 'yearly' secara default
-            updatePrices('yearly');
-            updateToggleStyle(toggleYearly);
+            updatePrices('monthly');
+            updateToggleStyle(toggleMonthly);
 
 
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
                     const period = this.getAttribute('data-period');
                     updatePrices(period);
+                    updateTime(period);
                     updateToggleStyle(this);
                 });
             });
